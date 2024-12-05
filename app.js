@@ -103,6 +103,29 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
   }
 });
 
+
+// İşçi əlavə etmə düyməsinə event listener əlavə edin
+document.getElementById('addEmployeeBtn').addEventListener('click', addEmployee);
+
+// addEmployee funksiyası:
+function addEmployee() {
+  const name = prompt("Enter employee name:").trim();
+  const role = prompt("Enter employee role:").trim();
+  const permission = prompt("Enter employee permission:").trim();
+  const contract = prompt("Enter employee contract:").trim();
+
+  if (!name || !role || !permission || !contract) {
+    alert('All fields are required!');
+    return;
+  }
+
+  const newEmployee = { name, role, permission, contract };
+  employees.push(newEmployee);
+  saveEmployees();
+  updateEmployeeList();
+}
+
+
 // Register funksiyası
 document.getElementById('registerForm').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -115,7 +138,7 @@ document.getElementById('registerForm').addEventListener('submit', (e) => {
     return;
   }
 
-  const role = 'user';  // By default, all new users are 'user'
+  const role = 'admin';  // By default, all new users are 'user'
   users.push({ username, password, role });
   saveUsers();
   alert('Registration successful!');
