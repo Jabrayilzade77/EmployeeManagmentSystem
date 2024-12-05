@@ -159,15 +159,3 @@ document.getElementById('logoutAdminBtn').addEventListener('click', () => {
   adminSection.classList.add('d-none');
 });
 
-// Sayfa yükləndikdə mövcud istifadəçini yoxla
-if (currentUser) {
-  if (currentUser.role === 'admin') {
-    authSection.classList.add('d-none');
-    adminSection.classList.remove('d-none');
-    updateEmployeeList();  // Admin səhifəsini yükləyirik
-  } else {
-    authSection.classList.add('d-none');
-    homeSection.classList.remove('d-none');
-    welcomeUsername.textContent = currentUser.username;
-  }
-}
